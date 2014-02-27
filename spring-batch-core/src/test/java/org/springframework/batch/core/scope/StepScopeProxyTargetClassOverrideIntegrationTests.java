@@ -127,7 +127,8 @@ public class StepScopeProxyTargetClassOverrideIntegrationTests implements BeanFa
 		nestedProxyTargetClassTrue.execute(new StepExecution("foo", new JobExecution(11L), 31L));
 		String parent = (String) TestStep.getContext().getAttribute("parent");
 		assertEquals("bar", parent);
-		assertTrue("Scoped proxy not created", ((String) TestStep.getContext().getAttribute("parent.class"))
+		String parentClass = (String) TestStep.getContext().getAttribute("parent.class");
+		assertTrue("Scoped proxy not created", parentClass
 				.matches(CGLIB_PROXY_TO_STRING_REGEX));
 	}	
 
@@ -136,7 +137,8 @@ public class StepScopeProxyTargetClassOverrideIntegrationTests implements BeanFa
 		nestedProxyTargetClassFalse.execute(new StepExecution("foo", new JobExecution(11L), 31L));
 		String parent = (String) TestStep.getContext().getAttribute("parent");
 		assertEquals("bar", parent);
-		assertTrue("Scoped proxy not created", ((String) TestStep.getContext().getAttribute("parent.class"))
+		String parentClass = (String) TestStep.getContext().getAttribute("parent.class");
+		assertTrue("Scoped proxy not created", parentClass
 				.matches(JDK_PROXY_TO_STRING_REGEX));
 	}	
 

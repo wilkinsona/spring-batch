@@ -22,6 +22,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.UnexpectedRollbackException;
@@ -307,6 +308,7 @@ public class FaultTolerantExceptionClassesTests implements ApplicationContextAwa
 	}
 
 	@Test
+	@DirtiesContext
 	public void testNoRollbackTaskletNoRollbackException() throws Exception {
 		tasklet.setExceptionType(SkippableRuntimeException.class);
 		StepExecution stepExecution = launchStep("noRollbackTasklet");

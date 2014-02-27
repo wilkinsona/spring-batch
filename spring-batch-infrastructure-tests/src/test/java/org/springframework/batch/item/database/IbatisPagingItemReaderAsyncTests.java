@@ -144,6 +144,7 @@ public class IbatisPagingItemReaderAsyncTests {
 		reader.setPageSize(2);
 		reader.setSqlMapClient(sqlMapClient);
 		reader.setSaveState(true);
+		reader.setDataSource(dataSource);
 
 		reader.afterPropertiesSet();
 
